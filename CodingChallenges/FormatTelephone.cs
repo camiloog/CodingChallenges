@@ -12,24 +12,24 @@ namespace CodingChallenges
     {
         public string solution(string S)
         {
-            string s = Regex.Replace(S, @"[^0-9]", "");
+            string str = Regex.Replace(S, @"[^0-9]", "");
             string result = "";
-
+                        
             int a = 3;
             int b = 2;
 
-            int sb = (s.Length * b) % a;
-            int sa = (s.Length - b * sb) / a;
+            int bSegments = (str.Length * b) % a;
+            int aSegments = (str.Length - b * bSegments) / a;
 
-            for (int i = 0; i < sa; i++)
+            for (int i = 0; i < aSegments; i++)
             {
-                result += s.Substring(0, a) + "-";
-                s = s.Remove(0, a);
+                result += str.Substring(0, a) + "-";
+                str = str.Remove(0, a);
             }
-            for (int i = 0; i < sb; i++)
+            for (int i = 0; i < bSegments; i++)
             {
-                result += s.Substring(0, b) + "-";
-                s = s.Remove(0, b);
+                result += str.Substring(0, b) + "-";
+                str = str.Remove(0, b);
             }
             result = result.Substring(0, result.Length - 1);
             return result;
